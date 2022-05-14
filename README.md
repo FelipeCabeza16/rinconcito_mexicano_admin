@@ -19,5 +19,5 @@ Pasos para correr el proyecto
 2. Instalar node.js
 3. Instalar mongodb
 4. Ubicarse en la carpeta server/
-5. Ejecutar el comando npm run dev
-6. Correr la app de administrador
+5. Ejecutar el comando npm install y luego npm run dev
+6. Correr la app de administrador (NOTA: CONFIGURAR AVD UN PIXEL 4)

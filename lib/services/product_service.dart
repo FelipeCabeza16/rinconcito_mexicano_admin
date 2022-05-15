@@ -21,7 +21,8 @@ class ProductService {
       if (res.statusCode == 200) {
         final decodedBody = Map<String, dynamic>.from(json.decode(res.body));
         final jsonProducts = decodedBody['products'];
-        return jsonProducts.map((service) => Product.fromMap(service)).toList();
+        final List<Product> mappedJSON = List<Product>.from(jsonProducts.map((service) => Product.fromMap(service)).toList());
+        return mappedJSON;
       }else {
         throw Exception('Error al obtener los productos');
       }

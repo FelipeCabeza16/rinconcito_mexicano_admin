@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rinconcito_mexicano/screens/bookings_screen.dart';
 import 'package:rinconcito_mexicano/screens/products_screen.dart';
+import 'package:rinconcito_mexicano/screens/profile_screen.dart';
 import 'package:rinconcito_mexicano/screens/tables_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-                        RaisedButton(
+            RaisedButton(
               child: const Text('Ver mesas'),
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
@@ -37,6 +38,15 @@ class HomeScreen extends StatelessWidget {
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (_) => const BookingsScreen(),
+                ),
+              ),
+            ),
+
+            RaisedButton(
+              child: const Text('Mi perfil'),
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const ProfileScreen(),
                 ),
               ),
             ),

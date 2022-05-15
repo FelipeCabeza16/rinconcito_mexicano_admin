@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:rinconcito_mexicano/models/restaurant.dart';
 import 'package:rinconcito_mexicano/services/restaurant_service.dart';
 
 part 'login_event.dart';
@@ -7,7 +8,7 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final RestaurantService restaurantService;
-  LoginBloc({required this.restaurantService}) : super(const LoginState()) {
+  LoginBloc({required this.restaurantService}) : super(LoginState()) {
     on<OnLoginTry>(_onLogginTry);
   }
 
@@ -16,9 +17,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       final restaurant =
           await restaurantService.login(event.username, event.password);
       if (restaurant.name.isNotEmpty) {
-        emit(const LoginState(isLoggedIn: true));
+        emit(LoginState(isLoggedIn: true, restaurant: restaurant));
       } else {
-        emit(const LoginState(isLoggedIn: false));
+        emit(LoginState(isLoggedIn: false));
       }
     } catch (e) {
       print(e);

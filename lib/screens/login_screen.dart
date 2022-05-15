@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rinconcito_mexicano/blocs/bloc/login_bloc.dart';
+import 'package:rinconcito_mexicano/blocs/login/login_bloc.dart';
+import 'package:rinconcito_mexicano/screens/home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -11,18 +12,23 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Rinconcito'),
       ),
-      body: BlocBuilder<LoginBloc, LoginState>(
+      body: BlocConsumer<LoginBloc, LoginState>(
+        listener: (context, state) {
+          if (state.isLoggedIn){
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const HomeScreen()));
+          }
+        },
         builder: (context, state) {
+          
           return Center(
             child: Column(
               children: [
-                Text('Estado del login: ${state.isLoggedIn}'),
                 RaisedButton(
                   onPressed: () {
                     final loginBloc = BlocProvider.of<LoginBloc>(context);
                     loginBloc.add(const OnLoginTry(username: 'rinconcitomexicano@gmail.com', password: 'holamundo'));
                   },
-                  child: Text('Iniciar'),
+                  child: const Text('Ir a inicio'),
                 ),
               ],
             ),

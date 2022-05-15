@@ -11,7 +11,7 @@ router.post('/product/create_new_product', AuthCtrl, ProductsCtrl.createProduct)
 
     router.get('/product/:id/avatar', ProductsCtrl.getProductPhoto),
  
-    router.get('/product/product/me', AuthCtrl, ProductsCtrl.fetchMyProducts),
+    router.get('/product/me', AuthCtrl, ProductsCtrl.fetchMyProducts),
     router.get('/product/fetch_all_products', ProductsCtrl.fetchAllProducts),
 
     router.get('/product/:id', ProductsCtrl.getProductById),

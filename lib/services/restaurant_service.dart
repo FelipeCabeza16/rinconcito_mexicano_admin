@@ -65,6 +65,7 @@ class RestaurantService {
         throw Exception('Failed to load restaurant');
       }
     } catch (e) {
+      print(e);
       return Future.error('Credenciales incorrectas o no hay conexión');
     }
   }

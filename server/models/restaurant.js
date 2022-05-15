@@ -155,6 +155,7 @@ restaurantSchema.methods.toJSON = function () {
   const restaurant = this;
   const restaurantObject = restaurant.toObject();
 
+  delete restaurantObject.password;
   delete restaurantObject.v;
   delete restaurantObject.createdAt;
   delete restaurantObject.updatedAt;

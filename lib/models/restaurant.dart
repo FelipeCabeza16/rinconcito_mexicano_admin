@@ -11,7 +11,6 @@ class Restaurant {
     Restaurant({
         required this.id,
         required this.document,
-        required this.password,
         required this.name,
         required this.description,
         required this.email,
@@ -22,7 +21,6 @@ class Restaurant {
 
     final String id;
     final String document;
-    final String password;
     final String name;
     final String description;
     final String email;
@@ -37,7 +35,6 @@ class Restaurant {
     factory Restaurant.fromMap(Map<String, dynamic> json) => Restaurant(
         id: json["_id"],
         document: json["document"],
-        password: json["password"],
         name: json["name"],
         description: json["description"],
         email: json["email"],
@@ -49,7 +46,6 @@ class Restaurant {
     Map<String, dynamic> toMap() => {
         "_id": id,
         "document": document,
-        "password": password,
         "name": name,
         "description": description,
         "email": email,

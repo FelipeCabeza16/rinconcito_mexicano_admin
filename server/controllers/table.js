@@ -46,7 +46,13 @@ exports.getRestaurantTables = async (req, res) => {
   try {
     const restaurant = await Restaurant.findById(
       req.restaurant._id
-    ).populate("tables");
+    ).populate({
+      path: 'tables', 
+      populate: {
+        path: 'tableStatues',
+      }
+    }
+      );
     if (restaurant.tables.length === 0) {
       throw new Error("No tienes mesas, añade al menos una");
     }

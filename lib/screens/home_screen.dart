@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rinconcito_mexicano/screens/bookings_screen.dart';
 import 'package:rinconcito_mexicano/screens/products_screen.dart';
+import 'package:rinconcito_mexicano/screens/tables_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,6 +21,14 @@ class HomeScreen extends StatelessWidget {
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (_) => const ProductsScreen(),
+                ),
+              ),
+            ),
+                        RaisedButton(
+              child: const Text('Ver mesas'),
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const TablesScreen(),
                 ),
               ),
             ),

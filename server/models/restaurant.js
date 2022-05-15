@@ -7,6 +7,7 @@ const config = require("../config");
 // For populate
 require("./product");
 require("./table");
+require("./tableStatus");
 
 const restaurantSchema = new mongoose.Schema(
   {
@@ -150,6 +151,18 @@ restaurantSchema.statics.findByPhone = async (phone) => {
   }
 };
 
+restaurantSchema.methods.toJSON = function () {
+  const restaurant = this;
+  const restaurantObject = restaurant.toObject();
+
+  delete restaurantObject.v;
+  delete restaurantObject.createdAt;
+  delete restaurantObject.updatedAt;
+  delete restaurantObject.tokens;
+
+  return restaurantObject;
+};
+
 restaurantSchema.statics.changePassword = async (
   document,
   oldPassword,
@@ -172,7 +185,12 @@ restaurantSchema.statics.findByCredentials = async (username, password) => {
     $or: [{ document: username }, { phone: username }, { email: username }],
   })
     .populate("products")
-    .populate("tables");
+    .populate({
+      path: "tables",
+      populate: {
+        path: "tableStatues",
+      }
+    });
 
   if (!restaurant) {
     throw new Error("Credenciales incorrectas");

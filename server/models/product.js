@@ -70,6 +70,7 @@ productsSchema.methods.toJSON = function () {
   const products = this;
   const productsObject = products.toObject();
 
+  delete productsObject.v;
   delete productsObject.createdAt;
   delete productsObject.updatedAt;
 

@@ -20,4 +20,10 @@ Pasos para correr el proyecto
 3. Instalar mongodb
 4. Ubicarse en la carpeta server/
 5. Ejecutar el comando npm install y luego npm run dev
-6. Correr la app de administrador (NOTA: CONFIGURAR AVD UN PIXEL 4)
+6. Ir a lib/config.dart y cambiar la URL por la ip local, es decir con un ipconfig
+7. Correr la app de administrador (NOTA: CONFIGURAR AVD UN PIXEL 4)
+
+CREDENCIALES PARA INICIAR SESIÓN EN EL RESTAURANTE
+
+rinconcitomexicano@gmail.com
+holamundo

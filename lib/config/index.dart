@@ -1,3 +1,3 @@
-const URL_DATABASE = 'laveight-api-admin';
+// const URL_DATABASE = 'rinconcito-mexicano-api-dev';
 
-const URL = '192.168.1.58:4000';
+const URL = '192.168.1.12:3000';

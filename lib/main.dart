@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rinconcito_mexicano/screens/login_screen.dart';
+import 'package:rinconcito_mexicano/services/restaurant_service.dart';
 
-void main() => runApp(MyApp());
+import 'blocs/bloc/login_bloc.dart';
+
+void main() {
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => LoginBloc(restaurantService: RestaurantService())),
+      ],
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -8,16 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Rinconcito Mexicano',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Rinconcito Mexicano Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
-      ),
+      home:  const LoginScreen(),
     );
   }
 }

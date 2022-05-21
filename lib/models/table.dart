@@ -3,11 +3,13 @@ import 'dart:convert';
 class Table {
     Table({
         required this.id,
+        required this.number,
         required this.tableStatues,
         required this.isAvailable,
     });
 
     final String id;
+    final int number;
     final List<TableStatus> tableStatues;
     final bool isAvailable;
 
@@ -17,12 +19,14 @@ class Table {
 
     factory Table.fromMap(Map<String, dynamic> json) => Table(
         id: json["_id"],
+        number: json["number"],
         tableStatues: List<TableStatus>.from(json["tableStatues"].map((x) => TableStatus.fromMap(x))),
         isAvailable: json["isAvailable"],
     );
 
     Map<String, dynamic> toMap() => {
         "_id": id,
+        "number": number,
         "tableStatues": List<dynamic>.from(tableStatues.map((x) => x.toMap())),
         "isAvailable": isAvailable,
     };

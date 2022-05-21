@@ -3,9 +3,15 @@ const Schema = mongoose.Schema;
 const TableStatus = require('./tableStatus')
 const config = require('../config')
 
+const Counter = require("./counter");
+
+
 const tablesSchema = new Schema(
   {
     // History of the table
+    number: {
+      type: Number,
+    },
     tableStatues: [{
       type: Schema.Types.ObjectId,
       ref: "TableStatus",
@@ -71,5 +77,17 @@ tablesSchema.methods.isTheTableBooked = async function () {
   const lastTableStatus = await TableStatus.findById(lastStatus);
   return (lastTableStatus.status === config.TABLE_BOOKING && table.isAvailable) ;
 }
+
+// id autoincrement
+tablesSchema.pre('save', function(next) {
+  var doc = this;
+  Counter.findByIdAndUpdate({ _id: 'entityId' }, { $inc: { seq: 1 } }, function(error, counter) {
+      if (error)
+          return next(error);
+      doc.number = counter.seq;
+      next();
+  });
+});
+
 
 module.exports = mongoose.model("Table", tablesSchema);

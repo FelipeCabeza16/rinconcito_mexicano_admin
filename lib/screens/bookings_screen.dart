@@ -32,7 +32,7 @@ class BookingsScreenState extends State<BookingsScreen> {
                 return ListTile(
                   title:
                       Text('Reserva a nombre de ${booking.client.firstName} ${booking.client.lastName} ', style: const TextStyle(fontSize: 18)),
-                  subtitle: Text('En la mesa ${booking.table}',
+                  subtitle: Text('En la mesa ${booking.table.number}',
                       style: const TextStyle(fontSize: 18)),
                   trailing: Text(booking.price.toString(),
                       style: const TextStyle(fontSize: 18)),

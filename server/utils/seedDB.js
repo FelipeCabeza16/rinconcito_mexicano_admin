@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const Booking = require("../models/booking");
+const Counter = require('../models/counter');
 const Client = require("../models/client");
 const Product = require("../models/product");
 const Restaurant = require('../models/restaurant');
@@ -14,6 +15,7 @@ class DB {
   constructor() {
     this.bookings = data.bookings;
     this.clients = data.clients;
+    this.counter = data.counters;
     this.products = data.products;
     this.restaurants = data.restaurants;
     this.tables = data.tables;
@@ -22,6 +24,7 @@ class DB {
     this.models = [
       Booking,
       Client,
+      Counter,
       Product,
       Restaurant,
       Table,
@@ -43,6 +46,7 @@ class DB {
     await this.clients.forEach(async (client) => {
       await new Client(client).save(() => {});
     });
+    await new Counter(this.counter).save(() => {})
 
     await this.products.forEach(async (product) => {
       await new Product(product).save(() => {});

@@ -14,6 +14,7 @@ const bookingSchema = new mongoose.Schema(
     price: {
       type: Number,
     },
+
     products: [
       {
         product: {
@@ -41,7 +42,6 @@ const bookingSchema = new mongoose.Schema(
       required: true,
     },
 
-
     profilePhoto: {
       type: String,
     },
@@ -66,13 +66,16 @@ bookingSchema.methods.calculatePrice = async function () {
   const products = [];
   let total = 0;
   for (let i = 0; i < booking.products.length; i++) {
-    const product = await Product.findById(booking.products[i]);    
+    const product = await Product.findById(booking.products[i]);
     total += product.product.price * product.product.price * product.quantity;
   }
   booking.price = total;
   await booking.save();
   return booking.price;
 };
+
+
+
 
 const Booking = mongoose.model("Booking", bookingSchema);
 

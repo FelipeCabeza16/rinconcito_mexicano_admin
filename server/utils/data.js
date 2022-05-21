@@ -106,7 +106,10 @@ module.exports = {
     },
   ],
 
-
+  counters: {
+    _id: "entityId",
+    seq: 1,
+  },
 
   products: [
     {

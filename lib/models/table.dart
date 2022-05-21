@@ -5,13 +5,11 @@ class Table {
         required this.id,
         required this.tableStatues,
         required this.isAvailable,
-        required this.createdBy,
     });
 
     final String id;
     final List<TableStatus> tableStatues;
     final bool isAvailable;
-    final String createdBy;
 
     factory Table.fromJson(String str) => Table.fromMap(json.decode(str));
 
@@ -21,14 +19,12 @@ class Table {
         id: json["_id"],
         tableStatues: List<TableStatus>.from(json["tableStatues"].map((x) => TableStatus.fromMap(x))),
         isAvailable: json["isAvailable"],
-        createdBy: json["createdBy"],
     );
 
     Map<String, dynamic> toMap() => {
         "_id": id,
         "tableStatues": List<dynamic>.from(tableStatues.map((x) => x.toMap())),
         "isAvailable": isAvailable,
-        "createdBy": createdBy,
     };
 }
 

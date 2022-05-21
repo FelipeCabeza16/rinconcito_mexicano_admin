@@ -21,7 +21,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       } else {
         emit(LoginState(isLoggedIn: false));
       }
-    } catch (e) {
+    } catch (e) {      
       print(e);
     }
   }

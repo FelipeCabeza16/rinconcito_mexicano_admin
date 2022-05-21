@@ -19,11 +19,14 @@ Pasos para correr el proyecto
 2. Instalar node.js
 3. Instalar mongodb
 4. Ubicarse en la carpeta server/
-5. Ejecutar el comando npm install y luego npm run dev
-6. Ir a lib/config.dart y cambiar la URL por la ip local, es decir con un ipconfig
-7. Correr la app de administrador (NOTA: CONFIGURAR AVD UN PIXEL 4)
+5. Ejecutar el comando npm install y luego npm run format
+6. **Ejecutar el comando npm run dev para correr el server**
+7. Ir a lib/config.dart y cambiar la URL por la ip local, es decir con un ipconfig
+8. Correr la app de administrador (NOTA: CONFIGURAR AVD UN PIXEL 4)
 
 CREDENCIALES PARA INICIAR SESIÓN EN EL RESTAURANTE
 
 rinconcitomexicano@gmail.com
 holamundo
+
+En el fichero server/utils/data.js está el populate del paso 5 para iniciar la base de datos, ahí se puede alterar el JSON para los productos
